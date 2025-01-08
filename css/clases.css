@@ -1,0 +1,80 @@
+
+body {
+    overflow-x: hidden;
+}
+
+#sidebar {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 250px;
+    background-color: #343a40;
+    color: #fff;
+    transition: transform 0.3s ease;
+    z-index:1070;
+}
+
+#sidebar.collapsed {
+    transform: translateX(-100%);
+}
+
+#sidebar .nav-link {
+    color: #fff;
+}
+
+#sidebar .nav-link:hover {
+    background-color: #495057;
+}
+
+#content {
+    margin-left: 250px;
+    transition: margin-left 0.3s ease;
+}
+
+#content.collapsed {
+    margin-left: 0;
+}
+
+@media (max-width: 768px) {
+    #sidebar {
+        transform: translateX(-100%);
+    }
+
+    #sidebar.collapsed {
+        transform: translateX(0);
+    }
+
+    #content {
+        margin-left: 0;
+    }
+    .navbar h1 {
+        font-size: 1.5rem;
+        margin-bottom: 0.5rem;
+    }
+    .btn {
+        font-size: 0.9rem;
+    }
+    .table th, .table td {
+        font-size: 0.7rem; /* Tamaño de letra aún más pequeño en pantallas pequeñas */
+    }
+    .table .btn {
+        padding: 0.2rem 0.4rem;
+        font-size: 0.7rem;
+    }
+}
+/* 
+//estilos para tabla */
+   /* Estilo personalizado para hacer la tabla más compacta */
+   .table {
+    font-size: 0.8rem; /* Tamaño de letra más pequeño para el contenido */
+    width: 100%;
+}
+.table th, .table td {
+    padding: 0.5rem;
+}
+/* Mejora la apariencia de las acciones */
+.table .btn {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.8rem;
+}
