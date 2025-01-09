@@ -10,25 +10,27 @@ if ($_SERVER["REQUEST_METHOD"] !== "POST") {
 }
 session_start();
 //Recepción de datos
+$id_contenido=isset($_POST['id_contenido']) ? $_POST["id_contenido"] : "";
 $peticion = isset($_POST['peticion']) ? $_POST['peticion'] : ""; 
-$id = isset($_POST["id"]) ? $_POST["id"] : "";
-// $nombre = isset($_POST['nombre']) ? $_POST['nombre'] : "";
+$id_submodulo = isset($_POST["id_submodulo"]) ? $_POST["id_submodulo"] : "";
+$nombre_archivo = isset($_POST['nombre_archivo']) ? $_POST['nombre_archivo'] : "";
+$ruta_archivo= isset($_POST['ruta_archivo']) ? $_POST['ruta_archivo']: "";
 
 //Procesamiento de los datos
 $ctrl = new ContenidoSubmoduloController();
 switch ($peticion) {
     case "INSERT":
-        if ( !$ctrl->validaAtributos(null,$nombre,$descripcion,$horario, $profesor ) ) {
+        if ( !$ctrl->validaAtributos(null,$id_submodulo,$nombre_archivo,$ruta_archivo) ) {
             echo json_encode(["result" => 0 ,"msg" => "ERROR: Datos inválidos"]);
         }
-        else if ( $ctrl->insertaRegistro($nombre,$descripcion,$codigo,$id_user,$creado_en,$horario ) ) {
+        else if ( $ctrl->insertaRegistro($nombre_archivo,$ruta_archivo,$id_submodulo) ) {
             echo json_encode(["result" => 1, "msg" => "Registro insertado correctamente"]);
         } else {
             echo json_encode(["result" => 0 ,"msg" => "ERROR: Problema de inserción en BD"]);
         }
         break;
     case "UPDATE":
-        if ( !$ctrl->validaAtributos($id,$nombre,$descripcion,$horario, $profesor ) ){
+        if ( !$ctrl->validaAtributos($id_contenido,$id_submodulo,$nombre_archivo,$ruta_archivo) ){
             echo json_encode(["result" => 0 ,"msg" => "ERROR: Datos inválidos"]);
         }
         else if ( $ctrl->actualizaRegistro($id,$nombre,$descripcion,$codigo,$id_user,$creado_en,$horario) ) {
@@ -38,10 +40,10 @@ switch ($peticion) {
         }
         break;
     case "DELETE":
-        if ( !$ctrl->validaAtributos($id) ) {
+        if ( !$ctrl->validaAtributos($id_contenido) ) {
             echo json_encode(["result" => 0 ,"msg" => "ERROR: Datos inválidos"]);
         }
-        else if ( $ctrl->eliminaRegistro($id) ) {
+        else if ( $ctrl->eliminaRegistro($id_contenido) ) {
             echo json_encode(["result" => 1, "msg" => "Registro eliminado correctamente"]);
         } else {
             echo json_encode(["result" => 0 ,"msg" => "ERROR: Problema de eliminación en BD. Puede tener catálogos dependientes"]);

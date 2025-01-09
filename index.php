@@ -63,6 +63,9 @@
 			}else if($accion=="entrarsubmodulo"){
 				require_once "_controller/ListaContenidoSubmoduloController.php";
 				$ctrl=new ListaContenidoSubmoduloController($id);
+			}else if($accion=="agregarcontenido"){
+				require_once "_controller/ContenidoSubmoduloController.php";
+				$ctrl=new ContenidoSubmoduloController($id,"INSERT");
 			}else if($accion=="salir"){
 				require_once "_controller/logoutAsync.php";
 				$ctrl=new logoutAsync();

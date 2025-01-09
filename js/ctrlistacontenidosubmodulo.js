@@ -14,7 +14,7 @@ function eliminarContenido(cardId, id) {
     // Crear un formulario con los datos necesarios
     const formulario = createPreFilledForm([
         { "name": "peticion", "value": "DELETE" },
-        { "name": "id", "value": id }
+        { "name": "id_contenido", "value": id }
     ]);
 
     // Confirmar el proceso y enviar la solicitud

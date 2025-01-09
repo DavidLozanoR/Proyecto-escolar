@@ -53,7 +53,11 @@
         <!-- Encabezado -->
         <div class="d-flex justify-content-between align-items-center mb-4">
             <h1 class="mb-0">Contenido de:<span class="titulo-modulo text-primary"> <?php echo $this->nombre_submodulo ?></span> </h1>
+        </div>
+        <div class="d-flex justify-content-end gap-2 mb-4">
+
             <input type="button" value="Regresar" class="btn btn-danger" onclick="javascript:location.replace('<?php echo SITE_URL; ?>inicio/entrarmodulo/<?php echo $this->id_modulo ?>')"/>
+            <input type="button" value="Agregar Contenido" class="btn btn-primary" onclick="javascript:location.replace('<?php echo SITE_URL; ?>inicio/agregarcontenido/<?php echo $this->id_submodulo ?>')"/>
         </div>
 
         <!-- Barra de búsqueda -->
@@ -65,10 +69,10 @@
         </div>
 
         <!-- Contenedor de tarjetas -->
-         <?php $ordinal=0?>
-        <div id="<?php echo $ordinal?>" class="row">
+        <div  class="row">
+            <?php $ordinal=0?>
             <?php foreach ($this->datos as $reg): ?>
-                <div class="col-md-4">
+                <div class="col-md-4" id="<?php echo $ordinal?>">
                     <div class="card">
                         <div class="card-body">
                             <h5 class="card-title"><?php echo htmlspecialchars($reg["nombre_archivo"]); ?></h5>

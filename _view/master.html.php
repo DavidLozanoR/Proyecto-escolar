@@ -76,14 +76,14 @@
             ordering: true,   // Activa la funcionalidad de ordenamiento
             autoWidth: true, // Desactiva el auto-ajuste de ancho
             language: {
-             url: "<?php echo SITE_URL; ?>utils/datatables_v2.0.8/es-MX.json" // Traducción al español
+                url: "<?php echo SITE_URL; ?>utils/datatables_v2.0.8/es-MX.json" // Traducción al español
             }
-            } );
+        } );
         const sidebar = document.getElementById('sidebar');
         const content = document.getElementById('content');
         const toggleSidebar = document.getElementById('toggleSidebar');
         const toggleSidebarMobile = document.getElementById('toggleSidebarMobile');
-
+        
         const adjustSidebarForScreenSize = () => {
             if (window.innerWidth <= 768) {
                 sidebar.classList.add('collapsed');
@@ -94,25 +94,25 @@
                 content.classList.remove('collapsed');
             }
         };
-
+        
         toggleSidebar.addEventListener('click', () => {
             sidebar.classList.toggle('collapsed');
             content.classList.toggle('collapsed');
         });
-
+        
         toggleSidebarMobile.addEventListener('click', () => {
             sidebar.classList.toggle('collapsed');
         });
-
+        
         window.addEventListener('resize', adjustSidebarForScreenSize);
         window.addEventListener('load', adjustSidebarForScreenSize);
-    </script>
+        </script>
 
 	
+        <script>
+            <?php $ctrl->renderJS(); ?>
+        </script>
 
-    <script>
-        <?php $ctrl->renderJS(); ?>
-x    </script>
 </body>
 </html>
 

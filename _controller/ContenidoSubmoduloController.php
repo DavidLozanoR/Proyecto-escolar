@@ -6,18 +6,23 @@ require_once "MainModel.php";
 
 class ContenidoSubmoduloController {
 
-    const VISTA="_view/contenidosubmodulo.html.php";
-    const JS="js/contenidosubmodulo.js";
+    const VISTA="_view/agregarcontenido.html.php";
+    const JS="js/ctragregarcontenidosubmodulo.js";
 
     private $id_submodulo;
     private $datos;
     private $nombre_submodulo;
     private $peticion;
+    private $nombre_archivo;
+    private $ruta_archivo;
 
     function __construct($id=null,$peticion=null)
     {
         $this->id_submodulo=$id;
         $this->peticion=$peticion;
+        if($id!=null){
+            $this->nombre_submodulo= $this->submoduloNombre($id);
+        }
     }
 
     function renderContent(){
@@ -33,8 +38,8 @@ class ContenidoSubmoduloController {
     function submoduloNombre($id_submodulo){
         $model=new MainModel();
         $datosSubmodulo= $model->seleccionaRegistros("submodulos",["nombre"],"id_submodulo=?",[$id_submodulo]);
-        $this->nombre_submodulo=$datosSubmodulo["0"]["nombre"];
-        return $this->nombre_submodulo;
+        // $this->nombre_submodulo=$datosSubmodulo["0"]["nombre"];
+         return $datosSubmodulo["0"]["nombre"];
         
     }
     function moduloId($id_submodulo){
@@ -44,11 +49,20 @@ class ContenidoSubmoduloController {
     }
 
     //funcionalidades 
-    public function validaAtributos($id=null) {
+    public function validaAtributos($id_archivo=null,$id_submodulo=null,$nombre_archivo=null,$ruta_archivo=null) {
         $res = true;
-        if ( !is_null($id) ) {
-			$res = $res && $id != "";
+        if ( !is_null($id_archivo) ) {
+			$res = $res && $id_archivo != "";
 		}
+        if ( !is_null($id_submodulo) ) {
+			$res = $res && $id_submodulo != "";
+		}
+        if ( !is_null($nombre_archivo) ) {
+			$res = $res && $nombre_archivo != "";
+		}
+        if (!is_null($ruta_archivo)) {
+            $res = $res && !empty($ruta_archivo) && filter_var($ruta_archivo, FILTER_VALIDATE_URL);
+        }
         return $res;
     }
 

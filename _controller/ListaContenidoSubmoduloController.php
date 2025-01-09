@@ -7,7 +7,7 @@ include_once "ContenidoSubmoduloController.php";
 class ListaContenidoSubmoduloController {
 
     const VISTA="_view/contenidosubmodulo.html.php";
-    const JS="js/contenidosubmodulo.js";
+    const JS="js/ctrlistacontenidosubmodulo.js";
 
     private $id_submodulo;
     private $id_modulo;
