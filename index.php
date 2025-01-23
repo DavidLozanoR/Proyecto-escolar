@@ -23,16 +23,17 @@
 	$accion = isset($peticion[1]) ? $peticion[1] : "";
 	$id = isset($peticion[2]) ? $peticion[2] : "";
 	 $id_user = $_SESSION["usuario"]["id_usuario"];
+	 $id_perfil=$_SESSION["usuario"]["id_perfil"];
 	 $nom_user = $_SESSION["usuario"]["nombre"];
 	//Procesar la peticion cargando el controlador adecuado
 	switch ($controlador) {
 		case "inicio":
 			if ($accion == "") {
 				require_once "_controller/BienvenidaController.php";
-				$ctrl = new BienvenidaController();//Pagina principal, perfil profesor
+				$ctrl = new BienvenidaController($id_perfil);//Pagina principal, perfil profesor
 			} else if ($accion == "perfil") {
 				require_once "_controller/PerfilController.php";
-				$ctrl = new PerfilController("UPDATE", $id_user);
+				$ctrl = new PerfilController("UPDATE", $id_user,$id_perfil);
 			} else if ($accion == "clases") {
 				require_once "_controller/ListaClasesController.php";
 				$ctrl = new ListaClasesController($nom_user);
@@ -42,7 +43,11 @@
 			}else if ($accion =="agregarclase"){
 				require_once "_controller/ClasesController.php";
 				$ctrl =new ClasesController(null,"INSERT",$nom_user,$id_user);
-			}else if ($accion =="entrarclase"){
+			}else if($accion=="unirclase"){
+				require_once "_controller/ClasesController.php";
+				$ctrl =new ClasesController(null,"INSERT",$nom_user,$id_user,$id_perfil);
+			}
+			else if ($accion =="entrarclase"){
 				require_once "_controller/ListaModulosController.php";
 				$ctrl =new ListaModulosController($id);
 			}else if($accion=="editarmodulo"){

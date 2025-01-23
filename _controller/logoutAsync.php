@@ -3,6 +3,7 @@ ini_set("display_errors", E_ALL);
 
 
 class logoutAsync{
+    
     const JS="js/logout.js";
  
         public function __construct() {

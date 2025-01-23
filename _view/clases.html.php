@@ -2,9 +2,16 @@
     <nav class="navbar navbar-light bg-light d-flex justify-content-between">
         <button class="btn btn-outline-dark d-md-none" id="toggleSidebarMobile">☰</button>
         <h1 class="mb-0">Gestión de Clases</h1>
-        <button class="btn btn-primary" onclick="javascript:location.replace('<?php echo SITE_URL; ?>inicio/agregarclase/')">
-            <i class="fas fa-plus"></i> Agregar Clase
-        </button>
+        <?php if($this->id_perfil==2):?>
+            <button class="btn btn-primary" onclick="javascript:location.replace('<?php echo SITE_URL; ?>inicio/agregarclase/')">
+                <i class="fas fa-plus"></i> Agregar Clase
+            </button>
+        <?php endif?> 
+        <?php if($this->id_perfil==3):?>
+            <button class="btn btn-primary" onclick="javascript:location.replace('<?php echo SITE_URL; ?>inicio/unirclase/')">
+                <i class="fas fa-plus"></i>  Unirme a una clase.
+            </button>
+        <?php endif?>  
     </nav>
     <div class="py-4">
         <!-- Mi tabla de datos -->

@@ -18,10 +18,12 @@ class PerfilController{
 	private $nombre;
 	private $genero;
     private $email;
+	private $id_perfil;
 	
-	public function __construct($peticion = null, $id= null) { 
+	public function __construct($peticion = null, $id= null,$id_perfil=null) { 
 		$this->peticion = $peticion;
 		$this->id = $id;
+		$this->id_perfil=$id_perfil;
 		//ver si es edicion 
 		
 			if($peticion !=null && $peticion === "UPDATE"){

@@ -8,6 +8,7 @@ class ListaClasesController {
 	public $datos;
 	public $profesor;
 	public $id_user;
+	private $id_perfil;
 
 	function __construct($profesor)
 	{
@@ -15,6 +16,7 @@ class ListaClasesController {
 		$this->profesor=$profesor;
 		if (isset($_SESSION["usuario"]["id_usuario"])) {
             $this->id_user = $_SESSION["usuario"]["id_usuario"];
+			$this->id_perfil = $_SESSION["usuario"]["id_perfil"];
         } else {
             die("Error: No hay usuario autenticado en la sesión.");
         }

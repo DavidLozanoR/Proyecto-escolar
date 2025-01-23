@@ -28,6 +28,10 @@
                 <option value="Otro" <?php echo $this->genero == 'Otro' ? 'selected' : ''; ?>>Otro</option>
             </select>
         </div>
+        <div class="mb-3">
+            <label for="Perfil" class="form-label">Perfil:</label>
+            <input type="text" id="perfil"  value="<?php if($this->id_perfil==2){echo 'Profesor'; }else if($this->id_perfil==3){echo 'Alumno';}?>" class="form-control" readonly>
+        </div>
 
         <input type="button" value="Regresar" class="btn btn-danger"
 		onclick="javascript:location.replace('<?php echo SITE_URL; ?>inicio/')"/>
