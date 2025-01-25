@@ -10,10 +10,12 @@ Class ListaSubModulosController {
     public $id;
     public $modulo;
     private $id_clase;
+    private $id_perfil;
     
     function __construct($id)
     {
         $this->id=$id;
+        $this->id_perfil=$_SESSION["usuario"]["id_perfil"];
         $ctrl=new SubModulosController();
         $this->modulo=$ctrl->cargaModulo($id);//carga nombre del modulo
         $this->id_clase=$ctrl->cargaClase($id);

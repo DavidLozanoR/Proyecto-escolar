@@ -57,7 +57,9 @@
         <div class="d-flex justify-content-end gap-2 mb-4">
 
             <input type="button" value="Regresar" class="btn btn-danger" onclick="javascript:location.replace('<?php echo SITE_URL; ?>inicio/entrarmodulo/<?php echo $this->id_modulo ?>')"/>
+            <?php if($this->id_perfil==2):?>
             <input type="button" value="Agregar Contenido" class="btn btn-primary" onclick="javascript:location.replace('<?php echo SITE_URL; ?>inicio/agregarcontenido/<?php echo $this->id_submodulo ?>')"/>
+            <?php endif?> 
         </div>
 
         <!-- Barra de búsqueda -->

@@ -39,13 +39,13 @@
 				$ctrl = new ListaClasesController($nom_user);
 			} else if ($accion =="editarclase"){
 				require_once "_controller/ClasesController.php";
-				$ctrl =new ClasesController($id,"UPDATE",$nom_user,$id_user);
+				$ctrl =new ClasesController($id,"UPDATE",$nom_user,$id_user,$id_perfil);
 			}else if ($accion =="agregarclase"){
 				require_once "_controller/ClasesController.php";
-				$ctrl =new ClasesController(null,"INSERT",$nom_user,$id_user);
+				$ctrl =new ClasesController(null,"INSERT",$nom_user,$id_user,$id_perfil);
 			}else if($accion=="unirclase"){
 				require_once "_controller/ClasesController.php";
-				$ctrl =new ClasesController(null,"INSERT",$nom_user,$id_user,$id_perfil);
+				$ctrl =new ClasesController(null,"JOIN",$nom_user,$id_user,$id_perfil);
 			}
 			else if ($accion =="entrarclase"){
 				require_once "_controller/ListaModulosController.php";

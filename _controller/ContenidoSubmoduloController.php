@@ -15,11 +15,13 @@ class ContenidoSubmoduloController {
     private $peticion;
     private $nombre_archivo;
     private $ruta_archivo;
+    private $id_perfil;
 
     function __construct($id=null,$peticion=null)
     {
         $this->id_submodulo=$id;
         $this->peticion=$peticion;
+        $this->id_perfil=$_SESSION["usuario"]["id_perfil"];
         if($id!=null){
             $this->nombre_submodulo= $this->submoduloNombre($id);
         }

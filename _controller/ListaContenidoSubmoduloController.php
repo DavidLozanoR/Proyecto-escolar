@@ -13,10 +13,12 @@ class ListaContenidoSubmoduloController {
     private $id_modulo;
     private $nombre_submodulo;
     private $datos;
+    private $id_perfil;
 
     function __construct($id)
     {
         $this->id_submodulo=$id;
+        $this->id_perfil=$_SESSION["usuario"]["id_perfil"];
         $datos=new ContenidoSubmoduloController($id);
         $this->nombre_submodulo=$datos->submoduloNombre($id);
         $this->id_modulo=$datos->moduloId($id);

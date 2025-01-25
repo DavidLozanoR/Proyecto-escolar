@@ -7,7 +7,9 @@
     <!-- Botones "Regresar" y "Agregar Módulo" alineados -->
     <div class="d-flex justify-content-end gap-2 mb-4">
         <input type="button" value="Regresar" class="btn btn-danger" onclick="javascript:location.replace('<?php echo SITE_URL; ?>inicio/clases/')"/>
+        <?php if($this->id_perfil==2):?>
         <a class="btn btn-primary" href="javascript:location.replace('<?php echo SITE_URL; ?>inicio/agregarmodulo/<?php echo $this->id?>/')"><i></i> Agregar Módulo</a>
+       <?php endif?>     
     </div>
     <br>
     <!-- Contenedor para las tarjetas de los módulos -->

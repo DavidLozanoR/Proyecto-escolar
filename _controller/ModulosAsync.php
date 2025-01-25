@@ -21,8 +21,12 @@ $clase_id=isset($_POST['id_clase']) ? $_POST['id_clase']:"";
 $id_modulo=isset($_POST['id_modulo']) ? $_POST['id_modulo']:"";
 $nombreModulo = isset($_POST['nombreModulo']) ? $_POST['nombreModulo'] : ""; 
 $descripcionModulo = isset($_POST['descripcionModulo']) ? $_POST['descripcionModulo'] : "";
+$id_perfil=$_SESSION["usuario"]["id_perfil"];
 $ctrl=new ModulosController();
-
+if ($id_perfil==3) {
+    echo json_encode(["result" => 0 ,"msg" => "No tienes permitido esta accion"]);
+    die();
+}
 
 
 //Procesamiento de los datos

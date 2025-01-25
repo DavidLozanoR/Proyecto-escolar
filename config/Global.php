@@ -14,3 +14,5 @@
     define("DB_USR", "root");
     define("DB_PASS", "1234");
 	define("CLAVE_SECRETA","test");
+	?>
+	

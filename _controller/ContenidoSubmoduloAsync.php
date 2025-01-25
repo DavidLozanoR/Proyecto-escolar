@@ -15,7 +15,11 @@ $peticion = isset($_POST['peticion']) ? $_POST['peticion'] : "";
 $id_submodulo = isset($_POST["id_submodulo"]) ? $_POST["id_submodulo"] : "";
 $nombre_archivo = isset($_POST['nombre_archivo']) ? $_POST['nombre_archivo'] : "";
 $ruta_archivo= isset($_POST['ruta_archivo']) ? $_POST['ruta_archivo']: "";
-
+$id_perfil=$_SESSION["usuario"]["id_perfil"];
+if ($id_perfil==3) {
+    echo json_encode(["result" => 0 ,"msg" => "No tienes permitido esta accion"]);
+    die();
+}
 //Procesamiento de los datos
 $ctrl = new ContenidoSubmoduloController();
 switch ($peticion) {

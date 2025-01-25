@@ -9,6 +9,7 @@ class ListaClasesController {
 	public $profesor;
 	public $id_user;
 	private $id_perfil;
+	private $clase_detalles=[];
 
 	function __construct($profesor)
 	{
@@ -25,7 +26,23 @@ class ListaClasesController {
 
 	public function renderContent() {
 		$model = new MainModel();
-		$this->datos = $model->seleccionaRegistros("clases", ["id_clase", "nombre", "descripcion","horario","codigo_unico"],"profesor_id=?",[$this->id_user]);
+		if($this->id_perfil==2){
+			$this->datos = $model->seleccionaRegistros("clases", ["id_clase", "nombre", "descripcion","horario","codigo_unico"],"profesor_id=?",[$this->id_user]);
+		}else if($this->id_perfil==3){
+			$clases_registradas = $model->seleccionaRegistros("clases_registradas", ["clase_id"],"alumno_id=?",[$this->id_user]);
+			foreach($clases_registradas as $clase){
+				$clase_detalles = $model->seleccionaRegistros("clases",["id_clase","nombre","descripcion","codigo_unico","profesor_id","horario"],"id_clase=?",[$clase["clase_id"]]);
+				if(!empty($clase_detalles)){
+					$clase_info = $clase_detalles[0];
+
+                    $profesor = $model->seleccionaRegistros( "usuarios",["nombre"], "id_usuario=?",[$clase_info["profesor_id"]]);
+
+                    $clase_info["profesor_nombre"] = !empty($profesor) ? $profesor[0]["nombre"] : "Desconocido";
+
+					$this->clase_detalles[]=$clase_info;
+				}
+			}
+		}
 		include self::VISTA;
 	}
 
